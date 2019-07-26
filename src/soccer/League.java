@@ -1,8 +1,69 @@
 package soccer;
 
+import utility.GameUtils;
+
 public class League {
 
     public static void main(String[] args) {
+
+        Team[] theTeams = createTeams();
+        Game[] theGames = createGames(theTeams);
+        Game currGame = theGames[0];
+
+
+        currGame.playGame();
+
+        System.out.println(currGame.getDescription());
+
+        //System.out.println(theGoals.length);
+//
+
+
+
+//
+//
+
+
+
+
+
+//        for (Goal theGoal : currGame.goals) {
+//            System.out.println("----------------------------------------------------------------------------------");
+//            System.out.println("Goal scored after " + theGoal.theTime + " mins by " + theGoal.thePlayer.playerName + " of " + theGoal.theTeam.teamName);
+//        }
+
+        System.out.println("--------------------------------------------------------------------------------------");
+
+
+//        for (Player thePlayer : team2.playerArray) {
+//            if (thePlayer.playerName.matches(".*Tek.*")) {
+//
+//                System.out.println("Found: " + thePlayer.playerName);
+//                System.out.println("Lat name: " + thePlayer.playerName.split(" ")[1]);
+//            }
+//
+//        }
+
+//        StringBuilder myPlayers = new StringBuilder();
+//        for (Player thePlayer : team1.playerArray) {
+//            String[] names = thePlayer.playerName.split(" ");
+//            myPlayers.append(names[1]);
+//            myPlayers.append(", ");
+//            myPlayers.append(names[0]);
+//           // myPlayers.append("\n");
+//
+//            System.out.println(myPlayers);
+//             myPlayers.delete(0, myPlayers.length());
+//
+//
+//
+//        }
+    }
+
+    public static Team[] createTeams(){
+
+        Team team1 = new Team();
+        team1.teamName = "Red Lion FC";
 
         Player player1 = new Player();
         player1.playerName = "Yamkela James";
@@ -10,49 +71,44 @@ public class League {
         Player player2 = new Player();
         player2.playerName = "Mfundo Ngqanekana";
 
+        Player player3 = new Player();
+        player3.playerName = "Anele Sigenu";
 
-        Player[] thePlayers = {player1, player2};
 
-        Team team1 = new Team();
-        team1.teamName = "Red Lion FC";
+        Player[] thePlayers = {player1, player2, player3};
+
+        team1.playerArray = thePlayers;
 
         Team team2 = new Team();
         team2.teamName = "FC Porto";
 
-        team1.playerArray = thePlayers;
-
-        team2.playerArray = new Player[2];
+        team2.playerArray = new Player[3];
         team2.playerArray[0] = new Player();
         team2.playerArray[0].playerName = "Teko Modise";
 
         team2.playerArray[1] = new Player();
         team2.playerArray[1].playerName = "Themba Zwane";
 
-
-        Game currGame = new Game();
-        currGame.homeTeam = team1;
-        currGame.awayTeam = team2;
-
-        Goal goal1 = new Goal();
-        goal1.thePlayer = currGame.homeTeam.playerArray[1];
-        goal1.theTeam = currGame.homeTeam;
-        goal1.theTime = 55;
-
-        Goal[] theGoals = {goal1};
-        currGame.goals = theGoals;
+        team2.playerArray[2] = new Player();
+        team2.playerArray[2].playerName = "Hlompho Kekana";
 
 
-        System.out.println("-----------Red Lion FC ----------");
-        for (Player thePlayer: team1.playerArray ){
-            System.out.println(thePlayer.playerName);
-        }
 
-        System.out.println("-----------FC Porto ----------");
-        for (Player thePlayer: team2.playerArray ){
-            System.out.println(thePlayer.playerName);
-        }
+        Team [] theTeams = {team1, team2};
+        return theTeams;
 
-        System.out.println("----------------------------------------------------------------------------------");
-        System.out.println("Goal scored after " + currGame.goals[0].theTime + " mins by " + currGame.goals[0].thePlayer.playerName + " of " + currGame.goals[0].theTeam.teamName);
     }
+
+    public static Game[] createGames(Team[] theTeams){
+
+        Game theGame = new Game();
+
+        theGame.homeTeam = theTeams[0];
+        theGame.awayTeam = theTeams[1];
+
+        Game [] theGames = {theGame};
+        return  theGames;
+
+    }
+
 }
